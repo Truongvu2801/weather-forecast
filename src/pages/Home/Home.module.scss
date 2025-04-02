@@ -16,6 +16,20 @@
       position: relative;
       width: 100%;
 
+      input {
+        flex: 1;
+        min-width: 0;
+        padding: 12px 40px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+
+        &:focus {
+          outline: none;
+          border-color: #3498db;
+        }
+      }
+
       .location-icon {
         position: absolute;
         left: 12px;
@@ -34,20 +48,6 @@
 
         &:hover {
           fill: #3498db;
-        }
-      }
-
-      input {
-        flex: 1;
-        min-width: 0;
-        padding: 12px 40px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 16px;
-
-        &:focus {
-          outline: none;
-          border-color: #3498db;
         }
       }
     }

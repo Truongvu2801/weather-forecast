@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.scss'
 import Home from './pages/Home/Home'
 import Search from './pages/Search/Search'
 import MainLayout from './components/layout/MainLayout/MainLayout'

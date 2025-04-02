@@ -1,11 +1,11 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import './MainLayout.scss'
+import styles from './MainLayout.module.scss'
 
 const MainLayout: React.FC = () => {
   return (
-    <div className="main-layout">
-      <main className="main-content">
+    <div className={styles['main-layout']}>
+      <main className={styles['main-content']}>
         <Outlet />
       </main>
     </div>

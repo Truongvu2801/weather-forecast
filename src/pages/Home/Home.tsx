@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDebounce } from '../../hooks/useDebounce'
 import { useWeather } from '../../hooks/useWeather'
 
-import './Home.scss'
+import styles from './Home.module.scss'
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
@@ -33,19 +33,22 @@ const Home: React.FC = () => {
     : {}
 
   return (
-    <div className="home">
-      <div className="search-section">
-        <div className="search-input">
-          <LocationIcon className="location-icon" />
+    <div className={styles['home']}>
+      <div className={styles['search-section']}>
+        <div className={styles['search-input']}>
+          <LocationIcon className={styles['location-icon']} />
           <input
             type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search city..."
           />
-          <SearchIcon className="search-icon" onClick={handleSearchIconClick} />
+          <SearchIcon
+            className={styles['search-icon']}
+            onClick={handleSearchIconClick}
+          />
         </div>
-        {error && <div className="error">City not found</div>}
+        {error && <div className={styles['error']}>City not found</div>}
       </div>
 
       {isLoading && <div>Loading...</div>}
@@ -62,14 +65,12 @@ const Home: React.FC = () => {
             icon={current.weather[0].icon}
           />
 
-          <div className="forecast-section">
+          <div className={styles['forecast-section']}>
             <h3>5-day Forecast (3 Hours)</h3>
-            {(
-              Object.entries(groupedForecasts) as [string, WeatherForecast[]][]
-            ).map(([date, items]) => (
-              <div key={date} className="forecast-day">
+            {Object.entries(groupedForecasts).map(([date, items]) => (
+              <div key={date} className={styles['forecast-day']}>
                 <h4>{formatWeekday(date)}</h4>
-                <div className="forecast-list">
+                <div className={styles['forecast-list']}>
                   {items.map((item: WeatherForecast) => (
                     <ForecastItem
                       key={item.dt}

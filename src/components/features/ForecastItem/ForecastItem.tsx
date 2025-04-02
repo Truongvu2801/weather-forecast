@@ -1,7 +1,8 @@
 import React from 'react'
 import { ForecastItemProps } from '../../../types/weather'
-import './ForecastItem.scss'
 import { getIconUrl } from '../../../utils/weather'
+
+import styles from './ForecastItem.module.scss'
 
 const ForecastItem: React.FC<ForecastItemProps> = ({
   time,
@@ -10,13 +11,13 @@ const ForecastItem: React.FC<ForecastItemProps> = ({
   icon
 }) => {
   return (
-    <div className="forecast-item">
-      <span className="time">{time}</span>
+    <div className={styles['forecast-item']}>
+      <span className={styles['time']}>{time}</span>
       <img src={getIconUrl(icon)} alt="weather icon" />
-      <span className="temperature">
+      <span className={styles['temperature']}>
         {Math.round(temperature.max)}°C / {Math.round(temperature.min)}°C
       </span>
-      <span className="condition">{condition}</span>
+      <span className={styles['condition']}>{condition}</span>
     </div>
   )
 }
