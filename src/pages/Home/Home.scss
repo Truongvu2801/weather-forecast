@@ -1,0 +1,122 @@
+.home {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+
+  .search-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 30px;
+    width: 100%;
+
+    .search-input {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 100%;
+
+      .location-icon {
+        position: absolute;
+        left: 12px;
+        width: 16px;
+        height: 16px;
+        fill: #666;
+      }
+
+      .search-icon {
+        position: absolute;
+        right: 26px;
+        width: 16px;
+        height: 16px;
+        fill: #666;
+        cursor: pointer;
+
+        &:hover {
+          fill: #3498db;
+        }
+      }
+
+      input {
+        flex: 1;
+        min-width: 0;
+        padding: 12px 40px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+
+        &:focus {
+          outline: none;
+          border-color: #3498db;
+        }
+      }
+    }
+
+    .error {
+      color: #e74c3c;
+      font-size: 14px;
+      padding-left: 12px;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:hover {
+        background: darken(#3498db, 10%);
+      }
+    }
+  }
+
+  .location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 24px;
+      font-weight: 500;
+      color: #333;
+    }
+  }
+
+  .forecast-section {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+    h3 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .forecast-list {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .home {
+    padding: 16px;
+
+    .search-section {
+      .search-input input {
+        font-size: 14px;
+        padding: 10px 36px;
+      }
+    }
+  }
+}
