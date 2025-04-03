@@ -3,9 +3,9 @@ import { SearchHistoryItem } from '../../../types/weather'
 import { ReactComponent as SearchIcon } from '../../../assets/search-icon.svg'
 import { ReactComponent as TrashIcon } from '../../../assets/trash-solid.svg'
 
-import styles from './SearchItem.module.scss'
+import styles from './HistoryItem.module.scss'
 
-const SearchItem = ({
+const HistoryItem = ({
   item,
   onRemoveCity,
   onSearchCity
@@ -17,9 +17,7 @@ const SearchItem = ({
   return (
     <div className={styles['search-item']}>
       <div className={styles['search-item-detail']}>
-        <span>
-          {item.city}, {item.country}
-        </span>
+        {item.city}, {item.country}
       </div>
       <div className={styles['search-action']}>
         <span onClick={onSearchCity} className={styles['action-button']}>
@@ -33,4 +31,4 @@ const SearchItem = ({
   )
 }
 
-export default SearchItem
+export default HistoryItem

@@ -7,10 +7,10 @@ import { formatTime, formatWeekday } from '../../utils/date'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDebounce } from '../../hooks/useDebounce'
 import { useWeather } from '../../hooks/useWeather'
-
-import styles from './Home.module.scss'
 import Skeleton from '../../components/common/Skeleton/Skeleton'
 import SearchBar from '../../components/features/SearchBar/SearchBar'
+
+import styles from './Home.module.scss'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -26,7 +26,7 @@ const Home = () => {
     }
   }, [cityName])
 
-  const { weatherData, isLoading } = useWeather(debouncedSearch)
+  const { weatherData, isLoading, error } = useWeather(debouncedSearch)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -46,7 +46,11 @@ const Home = () => {
 
   return (
     <div className={styles['home']}>
-      <SearchBar value={searchQuery} onChange={handleInputChange} />
+      <SearchBar
+        value={searchQuery}
+        onChange={handleInputChange}
+        error={error}
+      />
       {isLoading && <Skeleton />}
       {weatherData && currentWeather && (
         <>

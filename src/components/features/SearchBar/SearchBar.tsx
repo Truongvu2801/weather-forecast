@@ -7,10 +7,10 @@ import styles from './SearchBar.module.scss'
 interface SearchBarProps {
   value: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  error?: string
+  error: Error | null
 }
 
-const SearchBar = ({ value, onChange, error }: SearchBarProps) => {
+const SearchBar = ({ value, onChange, error = null }: SearchBarProps) => {
   const navigate = useNavigate()
 
   const handleSearchIconClick = () => {

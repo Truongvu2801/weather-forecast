@@ -2,11 +2,11 @@
   min-height: 100vh;
   background-color: #eceff1;
   display: flex;
-  flex-direction: column;
 
   .main-content {
-    max-width: 500px;
+    width: 500px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #eceff1;
   }
 }

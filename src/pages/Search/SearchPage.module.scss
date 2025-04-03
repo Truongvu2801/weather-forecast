@@ -2,7 +2,6 @@
   margin-bottom: 30px;
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 500px;
 
   .search-input {
     display: flex;
@@ -102,5 +101,14 @@
 
   h2 {
     margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-section {
+    .search-input input {
+      font-size: 14px;
+      padding: 10px 36px;
+    }
   }
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Button from '../../components/common/Button/Button'
 import { useWeather } from '../../hooks/useWeather'
 import { useNavigate, useLocation } from 'react-router-dom'
-import SearchItem from '../../components/features/SearchItem/SearchItem'
+import HistoryItem from '../../components/features/HistoryItem/HistoryItem'
 import { ReactComponent as BackIcon } from '../../assets/arrow-left-solid.svg'
 
 import styles from './SearchPage.module.scss'
@@ -68,7 +68,7 @@ const SearchPage = () => {
       <div className={styles['search-history']}>
         <h3>Search History</h3>
         {searchHistory.map(item => (
-          <SearchItem
+          <HistoryItem
             key={item.timestamp}
             item={item}
             onRemoveCity={() => handleDeleteHistory(item.timestamp)}
