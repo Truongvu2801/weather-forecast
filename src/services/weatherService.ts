@@ -16,3 +16,19 @@ export const fetchWeatherData = async (query: string) => {
     throw error
   }
 }
+
+export const fetchWeatherByCoords = async (lat: number, lon: number) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+    )
+
+    if (!response.ok) {
+      throw new Error('Invalid country or city')
+    }
+
+    return await response.json()
+  } catch (error) {
+    throw error
+  }
+}

@@ -7,7 +7,7 @@ import styles from './SearchBar.module.scss'
 interface SearchBarProps {
   value: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  error: Error | null
+  error: Error | null | string
 }
 
 const SearchBar = ({ value, onChange, error = null }: SearchBarProps) => {

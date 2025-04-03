@@ -1,8 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
 import { SearchHistoryItem, WeatherData } from '../types/weather'
-import { fetchWeatherData } from '../services/weatherService'
+import {
+  fetchWeatherByCoords,
+  fetchWeatherData
+} from '../services/weatherService'
 import { useEffect, useState } from 'react'
 
+interface WeatherQueryOptions {
+  staleTime?: number
+  cacheTime?: number
+  enabled?: boolean
+}
 export const useWeather = (city: string) => {
   const [searchHistory, setSearchHistory] = useState<SearchHistoryItem[]>(
     () => {
@@ -56,4 +64,25 @@ export const useWeather = (city: string) => {
     searchHistory,
     removeFromHistory
   }
+}
+
+export const useWeatherByCoords = (
+  lat: number | null,
+  lon: number | null,
+  options?: WeatherQueryOptions
+) => {
+  return useQuery<WeatherData, Error>({
+    queryKey: ['weather', 'coords', lat, lon],
+    queryFn: () => fetchWeatherByCoords(lat!, lon!),
+    enabled:
+      (options?.enabled !== undefined ? options.enabled : true) &&
+      lat !== null &&
+      lon !== null,
+    staleTime: options?.staleTime || 5 * 60 * 1000,
+    gcTime: options?.cacheTime || 30 * 60 * 1000,
+    retry: (failureCount, error) => {
+      if (failureCount >= 2) return false
+      return true
+    }
+  })
 }

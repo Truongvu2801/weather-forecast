@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import { WeatherForecast } from '../../types/weather'
 import WeatherCard from '../../components/features/WeatherCard/WeatherCard'
 import ForecastItem from '../../components/features/ForecastItem/ForecastItem'
@@ -6,7 +6,8 @@ import { groupForecastsByDay } from '../../utils/weather'
 import { formatTime, formatWeekday } from '../../utils/date'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDebounce } from '../../hooks/useDebounce'
-import { useWeather } from '../../hooks/useWeather'
+import { useGeolocation } from '../../hooks/useGeolocation'
+import { useWeather, useWeatherByCoords } from '../../hooks/useWeather'
 import Skeleton from '../../components/common/Skeleton/Skeleton'
 import SearchBar from '../../components/features/SearchBar/SearchBar'
 
@@ -19,14 +20,24 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState(cityName || '')
   const debouncedSearch = useDebounce(searchQuery)
 
-  // Update searchQuery when URL parameter changes
-  useEffect(() => {
-    if (cityName) {
-      setSearchQuery(cityName)
-    }
-  }, [cityName])
+  // Get user's location
+  const { latitude, longitude, error: locationError } = useGeolocation()
 
-  const { weatherData, isLoading, error } = useWeather(debouncedSearch)
+  const {
+    weatherData: searchWeatherData,
+    error: searchError,
+    isLoading: isSearchLoading
+  } = useWeather(debouncedSearch)
+
+  const { data: locationWeatherData, isLoading: isLocationLoading } =
+    useWeatherByCoords(latitude, longitude, {
+      enabled: !debouncedSearch && !!latitude && !!longitude
+    })
+
+  // Use search results if available, otherwise use location results
+  const weatherData = searchWeatherData || locationWeatherData
+  const isLoading = isSearchLoading || (isLocationLoading && !searchWeatherData)
+  const error = searchError || locationError
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -47,7 +58,7 @@ const Home = () => {
   return (
     <div className={styles['home']}>
       <SearchBar
-        value={searchQuery}
+        value={searchQuery || locationWeatherData?.city.name || ''}
         onChange={handleInputChange}
         error={error}
       />
