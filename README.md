@@ -1,6 +1,29 @@
-# Getting Started with Create React App
+# Environment Configuration Guide
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To properly configure this project, you need to create an `.env` file and define the required environment variables.
+# My API_KEY for testing: 8dc8e219c6c34ff9b55384cf69ba1c37
+## 📌 Steps to Create a `.env` File
+
+1. **Go to your project root directory.**
+2. **Create a new file named `.env`.**
+3. **Open the `.env` file` and add the following line:**
+   ```ini
+   REACT_APP_WEATHER_API_KEY='8dc8e219c6c34ff9b55384cf69ba1c37'
+   ```
+4. **Replace `your_api_key_here` with the actual value.**
+5. **Save the file.**
+6. **Restart your development server to apply changes.**
+
+## 🚀 Using the Environment Variable in Code
+
+### **For React (Create React App)**
+Access the variable in your code using:
+```tsx
+const apiKey = process.env.REACT_APP_XXX;
+console.log(apiKey);
+```
+
+Now you're all set! 🎉 Happy coding! 🚀
 
 ## Available Scripts
 
