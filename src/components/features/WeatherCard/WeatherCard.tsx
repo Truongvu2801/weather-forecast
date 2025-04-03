@@ -6,7 +6,7 @@ import WindArrow from '../../common/WindArrow/WindArrow'
 
 import styles from './WeatherCard.module.scss'
 
-const WeatherCard: React.FC<WeatherCardProps> = ({
+const WeatherCard = ({
   date,
   temperature,
   condition,
@@ -15,14 +15,18 @@ const WeatherCard: React.FC<WeatherCardProps> = ({
   windDegree,
   visibility,
   icon
-}) => {
+}: WeatherCardProps) => {
   return (
     <div className={styles['weather-card']}>
       <div className={styles['date']}>{formatFullDate(date)}</div>
       <div className={styles['main-info']}>
         <img src={getIconUrl(icon)} alt="weather icon" />
-        <div className={styles['temperature']}>{Math.round(temperature)}°C</div>
-        <div className={styles['condition']}>{condition}</div>
+        <div className={styles['main-info-content']}>
+          <div className={styles['temperature']}>
+            {Math.round(temperature)}°C
+          </div>
+          <div className={styles['condition']}>{condition}</div>
+        </div>
       </div>
       <div className={styles['details']}>
         <div className={styles['detail-item']}>

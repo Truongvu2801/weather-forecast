@@ -4,12 +4,12 @@ import { getIconUrl } from '../../../utils/weather'
 
 import styles from './ForecastItem.module.scss'
 
-const ForecastItem: React.FC<ForecastItemProps> = ({
+const ForecastItem = ({
   time,
   temperature,
   condition,
   icon
-}) => {
+}: ForecastItemProps) => {
   return (
     <div className={styles['forecast-item']}>
       <span className={styles['time']}>{time}</span>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import styles from './MainLayout.module.scss'
 
-const MainLayout: React.FC = () => {
+const MainLayout = () => {
   return (
     <div className={styles['main-layout']}>
       <main className={styles['main-content']}>

@@ -1,8 +1,13 @@
 .button {
-  padding: 10px 20px;
+  padding: 12px 20px;
   border-radius: 4px;
   border: none;
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 
   &--primary {
     background-color: #3498db;
@@ -10,15 +15,6 @@
 
     &:hover {
       background-color: darken(#3498db, 10%);
-    }
-  }
-
-  &--secondary {
-    background-color: #2ecc71;
-    color: white;
-
-    &:hover {
-      background-color: darken(#2ecc71, 10%);
     }
   }
 }

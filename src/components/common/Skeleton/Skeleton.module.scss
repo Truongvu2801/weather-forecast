@@ -1,0 +1,36 @@
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.weather-skeleton {
+  .skeleton-card,
+  .skeleton-item {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    animation: pulse 1.5s infinite;
+  }
+
+  .skeleton-card {
+    height: 200px;
+    margin-bottom: 20px;
+  }
+
+  .skeleton-forecasts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .skeleton-item {
+      width: 100%;
+      height: 100px;
+    }
+  }
+}

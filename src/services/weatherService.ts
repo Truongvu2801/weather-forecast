@@ -8,7 +8,7 @@ export const fetchWeatherData = async (query: string) => {
     )
 
     if (!response.ok) {
-      throw new Error('City not found')
+      throw new Error('Invalid country or city')
     }
 
     return await response.json()

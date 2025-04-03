@@ -1,9 +1,11 @@
 .main-layout {
   min-height: 100vh;
-  background-color: #f5f6f7;
+  background-color: #eceff1;
+  display: flex;
+  flex-direction: column;
 
   .main-content {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
   }

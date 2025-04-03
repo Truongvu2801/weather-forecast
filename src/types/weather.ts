@@ -53,7 +53,8 @@ export interface ForecastItem {
 }
 
 export interface SearchHistoryItem {
-  query: string
+  city: string
+  country: string
   timestamp: number
 }
 

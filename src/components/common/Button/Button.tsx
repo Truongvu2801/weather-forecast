@@ -6,15 +6,22 @@ interface ButtonProps {
   children: React.ReactNode
   variant?: 'primary' | 'secondary'
   onClick?: () => void
+  disabled?: boolean
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   children,
   variant = 'primary',
-  onClick
-}) => {
+  onClick,
+  disabled = false
+}: ButtonProps) => {
   return (
-    <button className={styles[`button button--${variant}`]} onClick={onClick}>
+    <button
+      className={`${styles.button} ${styles[`button--${variant}`]}`}
+      onClick={onClick}
+      disabled={disabled}
+      type="button"
+    >
       {children}
     </button>
   )

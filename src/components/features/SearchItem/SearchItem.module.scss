@@ -1,0 +1,40 @@
+.search-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+
+  .search-action {
+    width: 50px;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+  }
+
+  .search-item-detail {
+    cursor: pointer;
+  }
+}
+
+.search-icon {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  fill: #666;
+  cursor: pointer;
+
+  &:hover {
+    fill: #3498db;
+  }
+}
+
+.trash-icon {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  fill: #666;
+  cursor: pointer;
+
+  &:hover {
+    fill: red;
+  }
+}
